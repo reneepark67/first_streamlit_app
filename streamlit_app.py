@@ -36,10 +36,10 @@ streamlit.header("Fruityvice Fruit Advice!")
 try:
   fruit_choice = streamlit.text_input('What fruit would you like information about?')
   if not fruit_choice:
-      streamlit.error("Please select a fruit to get informtion.")
+    streamlit.error("Please select a fruit to get informtion.")
   else:
-      back_from_function = get_fruityvice_data (fruit_choice)
-      streamlit.dataframe (back_from_function)    
+    back_from_function = get_fruityvice_data (fruit_choice)
+    streamlit.dataframe (back_from_function)    
     
 except URLError as e:
     streamlit.error()
@@ -47,9 +47,9 @@ except URLError as e:
 streamlit.header("the fruit load list contains!")
 #Snowflake-related functions
 def get_fruit_load_list():
-        with my_cnx.cursor() as my_cur:
-             my_cur.execute("SELECT * from fruit_load_list")
-             return my_cur.fetchall()
+    with my_cnx.cursor() as my_cur:
+    my_cur.execute("SELECT * from fruit_load_list")
+    return my_cur.fetchall()
 
 # add a button
 if streamlit.button ('Get Fruit Load List'):
@@ -59,7 +59,7 @@ if streamlit.button ('Get Fruit Load List'):
 
 #allow the end user to add a fruit to the list
 def insert_row_snowflake (new_fruit):
-     with my_cnx.cursor() as my_cur:
+    with my_cnx.cursor() as my_cur:
             my_cur.execute ("insert into fruit_load_list values ('from streamlit')")
             return "Thanks for adding " + new_fruit 
             
